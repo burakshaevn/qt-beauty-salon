@@ -1,0 +1,1 @@
+# qt-beauty-salon
