@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1300</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Beauty Salon Manager</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1300</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="login">
+     <widget class="QPushButton" name="pushButton_login">
+      <property name="geometry">
+       <rect>
+        <x>592</x>
+        <y>415</y>
+        <width>115</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: #fafafa;
+	color: #140f10;
+	font: 700 18pt &quot;Open Sans&quot;;
+	border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Вход</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_password">
+      <property name="geometry">
+       <rect>
+        <x>409</x>
+        <y>352</y>
+        <width>528</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	color: #1d1b20;
+	background-color: #fafafa;
+	border-radius: 13px;
+	font: 18pt &quot;Open Sans&quot;;
+	padding-left: 27px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #140f10; 
+}</string>
+      </property>
+      <property name="maxLength">
+       <number>33</number>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>361</x>
+        <y>295</y>
+        <width>38</width>
+        <height>38</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources/resources.qrc">:/person.svg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_login">
+      <property name="geometry">
+       <rect>
+        <x>409</x>
+        <y>291</y>
+        <width>528</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	color: #1d1b20;
+	background-color: #fafafa;
+	border-radius: 13px;
+	font: 18pt &quot;Open Sans&quot;;
+	padding-left: 27px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #140f10;  
+}</string>
+      </property>
+      <property name="maxLength">
+       <number>33</number>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>361</x>
+        <y>356</y>
+        <width>38</width>
+        <height>38</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources/resources.qrc">:/more_horiz.svg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="masters"/>
+    <widget class="QWidget" name="services"/>
+   </widget>
+   <widget class="QPushButton" name="pushButton_authorization">
+    <property name="geometry">
+     <rect>
+      <x>864</x>
+      <y>700</y>
+      <width>322</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: #fafafa;
+	color: #140f10;
+	font: 700 18pt &quot;Open Sans&quot;;
+	border-radius: 15px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Главная</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_services">
+    <property name="geometry">
+     <rect>
+      <x>114</x>
+      <y>700</y>
+      <width>322</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: #fafafa;
+	color: #140f10;
+	font: 700 18pt &quot;Open Sans&quot;;
+	border-radius: 15px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Услуги</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_masters">
+    <property name="geometry">
+     <rect>
+      <x>489</x>
+      <y>700</y>
+      <width>322</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color: #fafafa;
+	color: #140f10;
+	font: 700 18pt &quot;Open Sans&quot;;
+	border-radius: 15px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Мастера</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
