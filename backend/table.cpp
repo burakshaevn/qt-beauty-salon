@@ -1,16 +1,16 @@
 #include "table.h"
 
-Table::Table(DatabaseManager* db_manager, const UserInfo& user, QWidget* parent)
+Table::Table(DatabaseManager* db_manager, const User* user, QWidget* parent)
     : QWidget(parent)
     , data_table_(new QTableView(this))
     , description_table(new QLabel(this))
 {
-    switch (user.role_) {
+    switch (user->GetRole()) {
     case Role::Admin:
         BuildAdminTables();
         break;
     case Role::User:
-        BuildUserTables(user.id_);
+        BuildUserTables(user->GetId());
         break;
     }
 }

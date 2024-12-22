@@ -48,5 +48,6 @@ private:
     DatabaseManager db_manager_;
     std::unique_ptr<User> user_;
     std::unique_ptr<Table> table_;
+    std::unique_ptr<QTableWidget> table_services_;
 };
 #endif // MAINWINDOW_H

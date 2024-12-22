@@ -41,7 +41,7 @@ protected:
     Tables current_table_;
 
 public:
-    explicit Table(DatabaseManager* db_manager, const UserInfo& user, QWidget* parent = nullptr);
+    explicit Table(DatabaseManager* db_manager, const User* user, QWidget* parent = nullptr);
 
     void BuildAdminTables();
     void BuildUserTables(const int id);

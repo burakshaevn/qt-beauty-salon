@@ -44,7 +44,7 @@ void MainWindow::on_pushButton_login_clicked() {
                     QMessageBox::information(this, "Информация", "Выполнена авторизация как администратор.");
                     UpdateUser(user, this);
 
-                    table_ = std::make_unique<Table>(&db_manager_, user, nullptr);
+                    table_ = std::make_unique<Table>(&db_manager_, user_.get(), nullptr);
                     connect(table_.get(), &Table::Logout, this, &MainWindow::on_logout_clicked);
                     ui->stackedWidget->addWidget(table_.get());
                     ui->stackedWidget->setCurrentWidget(table_.get());
@@ -72,7 +72,7 @@ void MainWindow::on_pushButton_login_clicked() {
                             QMessageBox::information(this, "Информация", "Выполнена авторизация как пользователь.");
                             UpdateUser(user, this);
 
-                            table_ = std::make_unique<Table>(&db_manager_, user, nullptr);
+                            table_ = std::make_unique<Table>(&db_manager_, user_.get(), nullptr);
                             connect(table_.get(), &Table::Logout, this, &MainWindow::on_logout_clicked);
                             ui->stackedWidget->addWidget(table_.get());
                             ui->stackedWidget->setCurrentWidget(table_.get());
@@ -110,6 +110,7 @@ void MainWindow::on_pushButton_authorization_clicked()
     }
     else{
         if (user_->GetRole() == Role::User){
+            table_->LoadAppointments(user_->GetId());
             ui->stackedWidget->setCurrentWidget(table_.get());
         }
     }
@@ -121,7 +122,6 @@ void MainWindow::on_pushButton_masters_clicked()
         if (user_->GetRole() == Role::User){
             ShowMasters();
             ui->stackedWidget->setCurrentWidget(ui->masters);
-
             return;
         }
     }
@@ -244,31 +244,35 @@ void MainWindow::ShowMasters() {
 }
 
 void MainWindow::ShowServices() {
-    // Очистка предыдущего содержимого
-    QVBoxLayout* layout = new QVBoxLayout(ui->services);
-    QTableWidget* table = new QTableWidget(this);
+    // Если таблица не создана, создаём её один раз
+    if (!table_services_) {
+        table_services_ = std::make_unique<QTableWidget>(this);
+        QVBoxLayout* layout = new QVBoxLayout(ui->services);
+        layout->addWidget(table_services_.get());
+        ui->services->setLayout(layout);
 
-    // Устанавливаем заголовки таблицы
-    table->setColumnCount(3);
-    table->setHorizontalHeaderLabels({"Название услуги", "Цена (₽)", "Длительность (мин)"});
-    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        // Устанавливаем заголовки таблицы (делается один раз)
+        table_services_->setColumnCount(3);
+        table_services_->setHorizontalHeaderLabels({"Название услуги", "Цена (₽)", "Длительность (мин)"});
+        table_services_->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    }
 
-    // Загружаем данные из таблицы services
+    // Очищаем содержимое таблицы (включая строки)
+    table_services_->setRowCount(0);
+
+    // Загружаем данные из базы
     QSqlQuery query("SELECT name, price, duration_minutes FROM public.services");
     int row = 0;
 
     while (query.next()) {
-        table->insertRow(row);
+        // Добавляем новую строку
+        table_services_->insertRow(row);
 
         // Заполняем строку данными
-        table->setItem(row, 0, new QTableWidgetItem(query.value("name").toString()));
-        table->setItem(row, 1, new QTableWidgetItem(query.value("price").toString()));
-        table->setItem(row, 2, new QTableWidgetItem(query.value("duration_minutes").toString()));
+        table_services_->setItem(row, 0, new QTableWidgetItem(query.value("name").toString()));
+        table_services_->setItem(row, 1, new QTableWidgetItem(query.value("price").toString()));
+        table_services_->setItem(row, 2, new QTableWidgetItem(query.value("duration_minutes").toString()));
 
         ++row;
     }
-
-    // Добавляем таблицу в виджет
-    layout->addWidget(table);
-    ui->services->setLayout(layout);
 }

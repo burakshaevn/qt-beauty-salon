@@ -5,7 +5,7 @@
 -- Dumped from database version 17.2
 -- Dumped by pg_dump version 17.2
 
--- Started on 2024-12-22 16:59:30
+-- Started on 2024-12-23 00:02:02
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -296,6 +296,9 @@ INSERT INTO public.appointments VALUES (6, 6, 6, 6, '2024-12-22 14:00:00');
 INSERT INTO public.appointments VALUES (7, 1, 2, 2, '2025-01-28 11:00:00');
 INSERT INTO public.appointments VALUES (8, 1, 6, 1, '2024-12-30 10:00:00');
 INSERT INTO public.appointments VALUES (9, 1, 4, 5, '2024-12-25 16:00:00');
+INSERT INTO public.appointments VALUES (10, 1, 10, 1, '2024-12-24 16:00:00');
+INSERT INTO public.appointments VALUES (11, 1, 7, 3, '2024-12-31 10:00:00');
+INSERT INTO public.appointments VALUES (12, 1, 9, 6, '2025-01-01 10:00:00');
 
 
 --
@@ -338,6 +341,13 @@ INSERT INTO public.services VALUES (3, 'Педикюр', 1800.00, 120);
 INSERT INTO public.services VALUES (4, 'Укладка волос', 2000.00, 75);
 INSERT INTO public.services VALUES (5, 'Окрашивание волос', 4500.00, 180);
 INSERT INTO public.services VALUES (6, 'Массаж головы', 1000.00, 30);
+INSERT INTO public.services VALUES (7, 'Модельная стрижка', 1100.00, 45);
+INSERT INTO public.services VALUES (9, 'Окрас и коррекция ресниц', 1800.00, 30);
+INSERT INTO public.services VALUES (8, 'Окраска и коррекция бровей', 1800.00, 30);
+INSERT INTO public.services VALUES (10, 'Долговременная укладка бровей', 2000.00, 45);
+INSERT INTO public.services VALUES (11, 'Депиляция подбородка', 400.00, 30);
+INSERT INTO public.services VALUES (12, 'Депиляция шеи', 400.00, 15);
+INSERT INTO public.services VALUES (13, 'Депиляция бёдер', 800.00, 60);
 
 
 --
@@ -355,7 +365,7 @@ SELECT pg_catalog.setval('public.admins_id_seq', 6, true);
 -- Name: appointments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.appointments_id_seq', 9, true);
+SELECT pg_catalog.setval('public.appointments_id_seq', 12, true);
 
 
 --
@@ -484,7 +494,7 @@ ALTER TABLE ONLY public.appointments
     ADD CONSTRAINT appointments_service_id_fkey FOREIGN KEY (service_id) REFERENCES public.services(id) ON DELETE CASCADE;
 
 
--- Completed on 2024-12-22 16:59:30
+-- Completed on 2024-12-23 00:02:02
 
 --
 -- PostgreSQL database dump complete
